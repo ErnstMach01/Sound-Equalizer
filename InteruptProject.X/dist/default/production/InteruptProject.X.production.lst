@@ -1,0 +1,920 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V1.38 build -256452561 
+                                                                                               Mon Jan  7 13:19:42 2019
+
+Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010351
+     1                           	processor	16F690
+     2                           	opt	pw 120
+     3                           	opt	lm
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1
+     6                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     7                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+     8                           	psect	maintext,global,class=CODE,split=1,delta=2
+     9                           	psect	text1,local,class=CODE,merge=1,delta=2
+    10                           	psect	intentry,global,class=CODE,delta=2
+    11                           	dabs	1,0x7E,2
+    12  0000                     	;# 
+    13  0001                     	;# 
+    14  0002                     	;# 
+    15  0003                     	;# 
+    16  0004                     	;# 
+    17  0005                     	;# 
+    18  0006                     	;# 
+    19  0007                     	;# 
+    20  000A                     	;# 
+    21  000B                     	;# 
+    22  000C                     	;# 
+    23  000D                     	;# 
+    24  000E                     	;# 
+    25  000E                     	;# 
+    26  000F                     	;# 
+    27  0010                     	;# 
+    28  0011                     	;# 
+    29  0012                     	;# 
+    30  0013                     	;# 
+    31  0014                     	;# 
+    32  0015                     	;# 
+    33  0015                     	;# 
+    34  0016                     	;# 
+    35  0017                     	;# 
+    36  0018                     	;# 
+    37  0019                     	;# 
+    38  001A                     	;# 
+    39  001C                     	;# 
+    40  001D                     	;# 
+    41  001E                     	;# 
+    42  001F                     	;# 
+    43  0081                     	;# 
+    44  0085                     	;# 
+    45  0086                     	;# 
+    46  0087                     	;# 
+    47  008C                     	;# 
+    48  008D                     	;# 
+    49  008E                     	;# 
+    50  008F                     	;# 
+    51  0090                     	;# 
+    52  0092                     	;# 
+    53  0093                     	;# 
+    54  0093                     	;# 
+    55  0093                     	;# 
+    56  0094                     	;# 
+    57  0095                     	;# 
+    58  0095                     	;# 
+    59  0096                     	;# 
+    60  0096                     	;# 
+    61  0097                     	;# 
+    62  0098                     	;# 
+    63  0099                     	;# 
+    64  009A                     	;# 
+    65  009B                     	;# 
+    66  009E                     	;# 
+    67  009F                     	;# 
+    68  010C                     	;# 
+    69  010C                     	;# 
+    70  010D                     	;# 
+    71  010E                     	;# 
+    72  010F                     	;# 
+    73  0115                     	;# 
+    74  0116                     	;# 
+    75  0118                     	;# 
+    76  0119                     	;# 
+    77  011A                     	;# 
+    78  011B                     	;# 
+    79  011E                     	;# 
+    80  011F                     	;# 
+    81  018C                     	;# 
+    82  018D                     	;# 
+    83  019D                     	;# 
+    84  019E                     	;# 
+    85  001F                     _ADCON0bits	set	31
+    86  001E                     _ADRESH	set	30
+    87  000B                     _INTCONbits	set	11
+    88  000C                     _PIR1bits	set	12
+    89  0007                     _PORTC	set	7
+    90  009F                     _ADCON1bits	set	159
+    91  008C                     _PIE1bits	set	140
+    92  0085                     _TRISA	set	133
+    93  0086                     _TRISB	set	134
+    94  0087                     _TRISC	set	135
+    95  011E                     _ANSEL	set	286
+    96  011E                     _ANSELbits	set	286
+    97                           
+    98                           ; #config settings
+    99  0000                     
+   100                           	psect	cinit
+   101  0013                     start_initialization:	
+   102  0013                     __initialization:	
+   103                           
+   104                           ; Clear objects allocated to COMMON
+   105  0013  01F9               	clrf	__pbssCOMMON& (0+127)
+   106  0014  01FA               	clrf	(__pbssCOMMON+1)& (0+127)
+   107  0015                     end_of_initialization:	
+   108                           ;End of C runtime variable initialization code
+   109                           
+   110  0015                     __end_of__initialization:	
+   111  0015  0183               	clrf	3
+   112  0016  118A  296D         	ljmp	_main	;jump to C main() function
+   113                           
+   114                           	psect	bssCOMMON
+   115  0079                     __pbssCOMMON:	
+   116  0079                     _pattern:	
+   117  0079                     	ds	2
+   118                           
+   119                           	psect	cstackCOMMON
+   120  0070                     __pcstackCOMMON:	
+   121  0070                     ?_isr:	
+   122  0070                     ??_isr:	
+   123                           ; 1 bytes @ 0x0
+   124                           
+   125  0070                     ?_main:	
+   126                           ; 1 bytes @ 0x0
+   127                           
+   128                           
+   129                           ; 1 bytes @ 0x0
+   130  0070                     	ds	7
+   131  0077                     isr@range:	
+   132                           
+   133                           ; 2 bytes @ 0x7
+   134  0077                     	ds	2
+   135                           
+   136                           	psect	cstackBANK0
+   137  0020                     __pcstackBANK0:	
+   138  0020                     ??_main:	
+   139                           
+   140                           ; 1 bytes @ 0x0
+   141  0020                     	ds	2
+   142                           
+   143                           	psect	maintext
+   144  016D                     __pmaintext:	
+   145 ;;
+   146 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   147 ;;
+   148 ;; *************** function _main *****************
+   149 ;; Defined at:
+   150 ;;		line 72 in file "InteruptProject.c"
+   151 ;; Parameters:    Size  Location     Type
+   152 ;;		None
+   153 ;; Auto vars:     Size  Location     Type
+   154 ;;		None
+   155 ;; Return value:  Size  Location     Type
+   156 ;;                  1    wreg      void 
+   157 ;; Registers used:
+   158 ;;		wreg, status,2, status,0
+   159 ;; Tracked objects:
+   160 ;;		On entry : B00/0
+   161 ;;		On exit  : 0/0
+   162 ;;		Unchanged: 0/0
+   163 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   164 ;;      Params:         0       0       0       0
+   165 ;;      Locals:         0       0       0       0
+   166 ;;      Temps:          0       2       0       0
+   167 ;;      Totals:         0       2       0       0
+   168 ;;Total ram usage:        2 bytes
+   169 ;; Hardware stack levels required when called:    1
+   170 ;; This function calls:
+   171 ;;		Nothing
+   172 ;; This function is called by:
+   173 ;;		Startup code after reset
+   174 ;; This function uses a non-reentrant model
+   175 ;;
+   176                           
+   177                           
+   178                           ;psect for function _main
+   179  016D                     _main:	
+   180                           
+   181                           ;InteruptProject.c: 73: TRISA= 0xFF;
+   182                           
+   183                           ;incstack = 0
+   184                           ; Regs used in _main: [wreg+status,2+status,0]
+   185  016D  30FF               	movlw	255
+   186  016E  1683               	bsf	3,5	;RP0=1, select bank1
+   187  016F  1303               	bcf	3,6	;RP1=0, select bank1
+   188  0170  0085               	movwf	5	;volatile
+   189                           
+   190                           ;InteruptProject.c: 74: TRISB= 0xFF;
+   191  0171  30FF               	movlw	255
+   192  0172  0086               	movwf	6	;volatile
+   193                           
+   194                           ;InteruptProject.c: 75: TRISC= 0x00;
+   195  0173  0187               	clrf	7	;volatile
+   196                           
+   197                           ;InteruptProject.c: 76: PORTC= 0;
+   198  0174  1283               	bcf	3,5	;RP0=0, select bank0
+   199  0175  1303               	bcf	3,6	;RP1=0, select bank0
+   200  0176  0187               	clrf	7	;volatile
+   201                           
+   202                           ;InteruptProject.c: 78: ANSEL= 0x00;
+   203  0177  1283               	bcf	3,5	;RP0=0, select bank2
+   204  0178  1703               	bsf	3,6	;RP1=1, select bank2
+   205  0179  019E               	clrf	30	;volatile
+   206                           
+   207                           ;InteruptProject.c: 79: ANSELbits.ANS2=1;
+   208  017A  151E               	bsf	30,2	;volatile
+   209                           
+   210                           ;InteruptProject.c: 81: ADCON0bits.ADFM=0;
+   211  017B  1283               	bcf	3,5	;RP0=0, select bank0
+   212  017C  1303               	bcf	3,6	;RP1=0, select bank0
+   213  017D  139F               	bcf	31,7	;volatile
+   214                           
+   215                           ;InteruptProject.c: 82: ADCON0bits.VCFG=0;
+   216  017E  131F               	bcf	31,6	;volatile
+   217                           
+   218                           ;InteruptProject.c: 83: ADCON1bits.ADCS= 0b001;
+   219  017F  1683               	bsf	3,5	;RP0=1, select bank1
+   220  0180  1303               	bcf	3,6	;RP1=0, select bank1
+   221  0181  081F               	movf	31,w	;volatile
+   222  0182  398F               	andlw	-113
+   223  0183  3810               	iorlw	16
+   224  0184  009F               	movwf	31	;volatile
+   225                           
+   226                           ;InteruptProject.c: 85: ADCON0bits.CHS=2;
+   227  0185  1283               	bcf	3,5	;RP0=0, select bank0
+   228  0186  1303               	bcf	3,6	;RP1=0, select bank0
+   229  0187  081F               	movf	31,w	;volatile
+   230  0188  39C3               	andlw	-61
+   231  0189  3808               	iorlw	8
+   232  018A  009F               	movwf	31	;volatile
+   233                           
+   234                           ;InteruptProject.c: 86: ADCON0bits.ADON=1;
+   235  018B  141F               	bsf	31,0	;volatile
+   236                           
+   237                           ;InteruptProject.c: 88: INTCONbits.RABIE = 1;
+   238  018C  158B               	bsf	11,3	;volatile
+   239                           
+   240                           ;InteruptProject.c: 89: INTCONbits.RABIF = 0;
+   241  018D  100B               	bcf	11,0	;volatile
+   242                           
+   243                           ;InteruptProject.c: 90: INTCONbits.GIE = 1;
+   244  018E  178B               	bsf	11,7	;volatile
+   245                           
+   246                           ;InteruptProject.c: 91: INTCONbits.PEIE = 1;
+   247  018F  170B               	bsf	11,6	;volatile
+   248                           
+   249                           ;InteruptProject.c: 92: PIE1bits.ADIE = 1;
+   250  0190  1683               	bsf	3,5	;RP0=1, select bank1
+   251  0191  1303               	bcf	3,6	;RP1=0, select bank1
+   252  0192  170C               	bsf	12,6	;volatile
+   253  0193                     l626:	
+   254                           ;InteruptProject.c: 94: while(1) {
+   255                           
+   256                           
+   257                           ;InteruptProject.c: 95: _delay((unsigned long)((100)*(4000000/4000.0)));
+   258  0193  3082               	movlw	130
+   259  0194  1283               	bcf	3,5	;RP0=0, select bank0
+   260  0195  00A1               	movwf	??_main+1
+   261  0196  30DD               	movlw	221
+   262  0197  00A0               	movwf	??_main
+   263  0198                     u177:	
+   264  0198  0BA0               	decfsz	??_main,f
+   265  0199  2998               	goto	u177
+   266  019A  0BA1               	decfsz	??_main+1,f
+   267  019B  2998               	goto	u177
+   268  019C  299D               	nop2
+   269                           
+   270                           ;InteruptProject.c: 96: ADCON0bits.GO = 1;
+   271  019D  1283               	bcf	3,5	;RP0=0, select bank0
+   272  019E  1303               	bcf	3,6	;RP1=0, select bank0
+   273  019F  149F               	bsf	31,1	;volatile
+   274                           
+   275                           ;InteruptProject.c: 97: PORTC = pattern;
+   276  01A0  0879               	movf	_pattern,w
+   277  01A1  0087               	movwf	7	;volatile
+   278  01A2  2993               	goto	l626
+   279  01A3                     __end_of_main:	
+   280                           ;InteruptProject.c: 98: }
+   281                           ;InteruptProject.c: 99: return;
+   282                           
+   283                           
+   284                           	psect	text1
+   285  0018                     __ptext1:	
+   286 ;; *************** function _isr *****************
+   287 ;; Defined at:
+   288 ;;		line 29 in file "InteruptProject.c"
+   289 ;; Parameters:    Size  Location     Type
+   290 ;;		None
+   291 ;; Auto vars:     Size  Location     Type
+   292 ;;  range           2    7[COMMON] int 
+   293 ;; Return value:  Size  Location     Type
+   294 ;;                  1    wreg      void 
+   295 ;; Registers used:
+   296 ;;		wreg, status,2, status,0
+   297 ;; Tracked objects:
+   298 ;;		On entry : 0/0
+   299 ;;		On exit  : 0/0
+   300 ;;		Unchanged: 0/0
+   301 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   302 ;;      Params:         0       0       0       0
+   303 ;;      Locals:         2       0       0       0
+   304 ;;      Temps:          7       0       0       0
+   305 ;;      Totals:         9       0       0       0
+   306 ;;Total ram usage:        9 bytes
+   307 ;; Hardware stack levels used:    1
+   308 ;; This function calls:
+   309 ;;		Nothing
+   310 ;; This function is called by:
+   311 ;;		Interrupt level 1
+   312 ;; This function uses a non-reentrant model
+   313 ;;
+   314                           
+   315                           
+   316                           ;psect for function _isr
+   317  0018                     _isr:	
+   318                           
+   319                           ;InteruptProject.c: 31: int range = 132;
+   320  0018  3084               	movlw	132
+   321  0019  00F7               	movwf	isr@range
+   322  001A  3000               	movlw	0
+   323  001B  00F8               	movwf	isr@range+1
+   324                           
+   325                           ;InteruptProject.c: 32: if (ADRESH >= 0 && ADRESH < (range-2)) {
+   326  001C  081E               	movf	30,w	;volatile
+   327  001D  0877               	movf	isr@range,w
+   328  001E  3EFE               	addlw	254
+   329  001F  00F0               	movwf	??_isr
+   330  0020  0878               	movf	isr@range+1,w
+   331  0021  1803               	skipnc
+   332  0022  3E01               	addlw	1
+   333  0023  3EFF               	addlw	255
+   334  0024  00F1               	movwf	??_isr+1
+   335  0025  0871               	movf	??_isr+1,w
+   336  0026  3A80               	xorlw	128
+   337  0027  3C80               	sublw	128
+   338  0028  1D03               	skipz
+   339  0029  282C               	goto	u1_25
+   340  002A  0870               	movf	??_isr,w
+   341  002B  021E               	subwf	30,w	;volatile
+   342  002C                     u1_25:	
+   343  002C  1803               	skipnc
+   344  002D  2830               	goto	i1l512
+   345                           
+   346                           ;InteruptProject.c: 33: pattern = 0b00000000;
+   347  002E  01F9               	clrf	_pattern
+   348  002F  01FA               	clrf	_pattern+1
+   349  0030                     i1l512:	
+   350                           
+   351                           ;InteruptProject.c: 34: }
+   352                           ;InteruptProject.c: 36: if(ADRESH >= (range-2) && ADRESH < range){
+   353  0030  0877               	movf	isr@range,w
+   354  0031  3EFE               	addlw	254
+   355  0032  00F0               	movwf	??_isr
+   356  0033  0878               	movf	isr@range+1,w
+   357  0034  1803               	skipnc
+   358  0035  3E01               	addlw	1
+   359  0036  3EFF               	addlw	255
+   360  0037  00F1               	movwf	??_isr+1
+   361  0038  0871               	movf	??_isr+1,w
+   362  0039  3A80               	xorlw	128
+   363  003A  3C80               	sublw	128
+   364  003B  1D03               	skipz
+   365  003C  2841               	goto	u2_25
+   366  003D  0870               	movf	??_isr,w
+   367  003E  1283               	bcf	3,5	;RP0=0, select bank0
+   368  003F  1303               	bcf	3,6	;RP1=0, select bank0
+   369  0040  021E               	subwf	30,w	;volatile
+   370  0041                     u2_25:	
+   371  0041  1C03               	skipc
+   372  0042  2852               	goto	i1l32
+   373  0043  0878               	movf	isr@range+1,w
+   374  0044  3A80               	xorlw	128
+   375  0045  3C80               	sublw	128
+   376  0046  1D03               	skipz
+   377  0047  284C               	goto	u3_25
+   378  0048  0877               	movf	isr@range,w
+   379  0049  1283               	bcf	3,5	;RP0=0, select bank0
+   380  004A  1303               	bcf	3,6	;RP1=0, select bank0
+   381  004B  021E               	subwf	30,w	;volatile
+   382  004C                     u3_25:	
+   383  004C  1803               	skipnc
+   384  004D  2852               	goto	i1l32
+   385                           
+   386                           ;InteruptProject.c: 37: pattern = 0b00000001;
+   387  004E  3001               	movlw	1
+   388  004F  00F9               	movwf	_pattern
+   389  0050  3000               	movlw	0
+   390  0051  00FA               	movwf	_pattern+1
+   391  0052                     i1l32:	
+   392                           
+   393                           ;InteruptProject.c: 38: }
+   394                           ;InteruptProject.c: 40: if(ADRESH >= range && ADRESH < (range+2)){
+   395  0052  0878               	movf	isr@range+1,w
+   396  0053  3A80               	xorlw	128
+   397  0054  3C80               	sublw	128
+   398  0055  1D03               	skipz
+   399  0056  285B               	goto	u4_25
+   400  0057  0877               	movf	isr@range,w
+   401  0058  1283               	bcf	3,5	;RP0=0, select bank0
+   402  0059  1303               	bcf	3,6	;RP1=0, select bank0
+   403  005A  021E               	subwf	30,w	;volatile
+   404  005B                     u4_25:	
+   405  005B  1C03               	skipc
+   406  005C  2874               	goto	i1l522
+   407  005D  0877               	movf	isr@range,w
+   408  005E  3E02               	addlw	2
+   409  005F  00F0               	movwf	??_isr
+   410  0060  0878               	movf	isr@range+1,w
+   411  0061  1803               	skipnc
+   412  0062  3E01               	addlw	1
+   413  0063  3E00               	addlw	0
+   414  0064  00F1               	movwf	??_isr+1
+   415  0065  0871               	movf	??_isr+1,w
+   416  0066  3A80               	xorlw	128
+   417  0067  3C80               	sublw	128
+   418  0068  1D03               	skipz
+   419  0069  286E               	goto	u5_25
+   420  006A  0870               	movf	??_isr,w
+   421  006B  1283               	bcf	3,5	;RP0=0, select bank0
+   422  006C  1303               	bcf	3,6	;RP1=0, select bank0
+   423  006D  021E               	subwf	30,w	;volatile
+   424  006E                     u5_25:	
+   425  006E  1803               	skipnc
+   426  006F  2874               	goto	i1l522
+   427                           
+   428                           ;InteruptProject.c: 41: pattern = 0b00000011;
+   429  0070  3003               	movlw	3
+   430  0071  00F9               	movwf	_pattern
+   431  0072  3000               	movlw	0
+   432  0073  00FA               	movwf	_pattern+1
+   433  0074                     i1l522:	
+   434                           
+   435                           ;InteruptProject.c: 42: }
+   436                           ;InteruptProject.c: 44: if(ADRESH >= (range+2) && ADRESH < (range+4)){
+   437  0074  0877               	movf	isr@range,w
+   438  0075  3E02               	addlw	2
+   439  0076  00F0               	movwf	??_isr
+   440  0077  0878               	movf	isr@range+1,w
+   441  0078  1803               	skipnc
+   442  0079  3E01               	addlw	1
+   443  007A  3E00               	addlw	0
+   444  007B  00F1               	movwf	??_isr+1
+   445  007C  0871               	movf	??_isr+1,w
+   446  007D  3A80               	xorlw	128
+   447  007E  3C80               	sublw	128
+   448  007F  1D03               	skipz
+   449  0080  2885               	goto	u6_25
+   450  0081  0870               	movf	??_isr,w
+   451  0082  1283               	bcf	3,5	;RP0=0, select bank0
+   452  0083  1303               	bcf	3,6	;RP1=0, select bank0
+   453  0084  021E               	subwf	30,w	;volatile
+   454  0085                     u6_25:	
+   455  0085  1C03               	skipc
+   456  0086  289E               	goto	i1l528
+   457  0087  0877               	movf	isr@range,w
+   458  0088  3E04               	addlw	4
+   459  0089  00F0               	movwf	??_isr
+   460  008A  0878               	movf	isr@range+1,w
+   461  008B  1803               	skipnc
+   462  008C  3E01               	addlw	1
+   463  008D  3E00               	addlw	0
+   464  008E  00F1               	movwf	??_isr+1
+   465  008F  0871               	movf	??_isr+1,w
+   466  0090  3A80               	xorlw	128
+   467  0091  3C80               	sublw	128
+   468  0092  1D03               	skipz
+   469  0093  2898               	goto	u7_25
+   470  0094  0870               	movf	??_isr,w
+   471  0095  1283               	bcf	3,5	;RP0=0, select bank0
+   472  0096  1303               	bcf	3,6	;RP1=0, select bank0
+   473  0097  021E               	subwf	30,w	;volatile
+   474  0098                     u7_25:	
+   475  0098  1803               	skipnc
+   476  0099  289E               	goto	i1l528
+   477                           
+   478                           ;InteruptProject.c: 45: pattern = 0b00000111;
+   479  009A  3007               	movlw	7
+   480  009B  00F9               	movwf	_pattern
+   481  009C  3000               	movlw	0
+   482  009D  00FA               	movwf	_pattern+1
+   483  009E                     i1l528:	
+   484                           
+   485                           ;InteruptProject.c: 46: }
+   486                           ;InteruptProject.c: 48: if(ADRESH >= (range+4) && ADRESH < (range+6)){
+   487  009E  0877               	movf	isr@range,w
+   488  009F  3E04               	addlw	4
+   489  00A0  00F0               	movwf	??_isr
+   490  00A1  0878               	movf	isr@range+1,w
+   491  00A2  1803               	skipnc
+   492  00A3  3E01               	addlw	1
+   493  00A4  3E00               	addlw	0
+   494  00A5  00F1               	movwf	??_isr+1
+   495  00A6  0871               	movf	??_isr+1,w
+   496  00A7  3A80               	xorlw	128
+   497  00A8  3C80               	sublw	128
+   498  00A9  1D03               	skipz
+   499  00AA  28AF               	goto	u8_25
+   500  00AB  0870               	movf	??_isr,w
+   501  00AC  1283               	bcf	3,5	;RP0=0, select bank0
+   502  00AD  1303               	bcf	3,6	;RP1=0, select bank0
+   503  00AE  021E               	subwf	30,w	;volatile
+   504  00AF                     u8_25:	
+   505  00AF  1C03               	skipc
+   506  00B0  28C8               	goto	i1l534
+   507  00B1  0877               	movf	isr@range,w
+   508  00B2  3E06               	addlw	6
+   509  00B3  00F0               	movwf	??_isr
+   510  00B4  0878               	movf	isr@range+1,w
+   511  00B5  1803               	skipnc
+   512  00B6  3E01               	addlw	1
+   513  00B7  3E00               	addlw	0
+   514  00B8  00F1               	movwf	??_isr+1
+   515  00B9  0871               	movf	??_isr+1,w
+   516  00BA  3A80               	xorlw	128
+   517  00BB  3C80               	sublw	128
+   518  00BC  1D03               	skipz
+   519  00BD  28C2               	goto	u9_25
+   520  00BE  0870               	movf	??_isr,w
+   521  00BF  1283               	bcf	3,5	;RP0=0, select bank0
+   522  00C0  1303               	bcf	3,6	;RP1=0, select bank0
+   523  00C1  021E               	subwf	30,w	;volatile
+   524  00C2                     u9_25:	
+   525  00C2  1803               	skipnc
+   526  00C3  28C8               	goto	i1l534
+   527                           
+   528                           ;InteruptProject.c: 49: pattern = 0b00001111;
+   529  00C4  300F               	movlw	15
+   530  00C5  00F9               	movwf	_pattern
+   531  00C6  3000               	movlw	0
+   532  00C7  00FA               	movwf	_pattern+1
+   533  00C8                     i1l534:	
+   534                           
+   535                           ;InteruptProject.c: 50: }
+   536                           ;InteruptProject.c: 52: if(ADRESH >= (range+6) && ADRESH < (range+8)){
+   537  00C8  0877               	movf	isr@range,w
+   538  00C9  3E06               	addlw	6
+   539  00CA  00F0               	movwf	??_isr
+   540  00CB  0878               	movf	isr@range+1,w
+   541  00CC  1803               	skipnc
+   542  00CD  3E01               	addlw	1
+   543  00CE  3E00               	addlw	0
+   544  00CF  00F1               	movwf	??_isr+1
+   545  00D0  0871               	movf	??_isr+1,w
+   546  00D1  3A80               	xorlw	128
+   547  00D2  3C80               	sublw	128
+   548  00D3  1D03               	skipz
+   549  00D4  28D9               	goto	u10_25
+   550  00D5  0870               	movf	??_isr,w
+   551  00D6  1283               	bcf	3,5	;RP0=0, select bank0
+   552  00D7  1303               	bcf	3,6	;RP1=0, select bank0
+   553  00D8  021E               	subwf	30,w	;volatile
+   554  00D9                     u10_25:	
+   555  00D9  1C03               	skipc
+   556  00DA  28F2               	goto	i1l540
+   557  00DB  0877               	movf	isr@range,w
+   558  00DC  3E08               	addlw	8
+   559  00DD  00F0               	movwf	??_isr
+   560  00DE  0878               	movf	isr@range+1,w
+   561  00DF  1803               	skipnc
+   562  00E0  3E01               	addlw	1
+   563  00E1  3E00               	addlw	0
+   564  00E2  00F1               	movwf	??_isr+1
+   565  00E3  0871               	movf	??_isr+1,w
+   566  00E4  3A80               	xorlw	128
+   567  00E5  3C80               	sublw	128
+   568  00E6  1D03               	skipz
+   569  00E7  28EC               	goto	u11_25
+   570  00E8  0870               	movf	??_isr,w
+   571  00E9  1283               	bcf	3,5	;RP0=0, select bank0
+   572  00EA  1303               	bcf	3,6	;RP1=0, select bank0
+   573  00EB  021E               	subwf	30,w	;volatile
+   574  00EC                     u11_25:	
+   575  00EC  1803               	skipnc
+   576  00ED  28F2               	goto	i1l540
+   577                           
+   578                           ;InteruptProject.c: 53: pattern = 0b00011111;
+   579  00EE  301F               	movlw	31
+   580  00EF  00F9               	movwf	_pattern
+   581  00F0  3000               	movlw	0
+   582  00F1  00FA               	movwf	_pattern+1
+   583  00F2                     i1l540:	
+   584                           
+   585                           ;InteruptProject.c: 54: }
+   586                           ;InteruptProject.c: 56: if(ADRESH >= (range+8) && ADRESH < (range+10)){
+   587  00F2  0877               	movf	isr@range,w
+   588  00F3  3E08               	addlw	8
+   589  00F4  00F0               	movwf	??_isr
+   590  00F5  0878               	movf	isr@range+1,w
+   591  00F6  1803               	skipnc
+   592  00F7  3E01               	addlw	1
+   593  00F8  3E00               	addlw	0
+   594  00F9  00F1               	movwf	??_isr+1
+   595  00FA  0871               	movf	??_isr+1,w
+   596  00FB  3A80               	xorlw	128
+   597  00FC  3C80               	sublw	128
+   598  00FD  1D03               	skipz
+   599  00FE  2903               	goto	u12_25
+   600  00FF  0870               	movf	??_isr,w
+   601  0100  1283               	bcf	3,5	;RP0=0, select bank0
+   602  0101  1303               	bcf	3,6	;RP1=0, select bank0
+   603  0102  021E               	subwf	30,w	;volatile
+   604  0103                     u12_25:	
+   605  0103  1C03               	skipc
+   606  0104  291C               	goto	i1l546
+   607  0105  0877               	movf	isr@range,w
+   608  0106  3E0A               	addlw	10
+   609  0107  00F0               	movwf	??_isr
+   610  0108  0878               	movf	isr@range+1,w
+   611  0109  1803               	skipnc
+   612  010A  3E01               	addlw	1
+   613  010B  3E00               	addlw	0
+   614  010C  00F1               	movwf	??_isr+1
+   615  010D  0871               	movf	??_isr+1,w
+   616  010E  3A80               	xorlw	128
+   617  010F  3C80               	sublw	128
+   618  0110  1D03               	skipz
+   619  0111  2916               	goto	u13_25
+   620  0112  0870               	movf	??_isr,w
+   621  0113  1283               	bcf	3,5	;RP0=0, select bank0
+   622  0114  1303               	bcf	3,6	;RP1=0, select bank0
+   623  0115  021E               	subwf	30,w	;volatile
+   624  0116                     u13_25:	
+   625  0116  1803               	skipnc
+   626  0117  291C               	goto	i1l546
+   627                           
+   628                           ;InteruptProject.c: 57: pattern = 0b00111111;
+   629  0118  303F               	movlw	63
+   630  0119  00F9               	movwf	_pattern
+   631  011A  3000               	movlw	0
+   632  011B  00FA               	movwf	_pattern+1
+   633  011C                     i1l546:	
+   634                           
+   635                           ;InteruptProject.c: 58: }
+   636                           ;InteruptProject.c: 60: if(ADRESH >= (range+10) && ADRESH < (range+12)){
+   637  011C  0877               	movf	isr@range,w
+   638  011D  3E0A               	addlw	10
+   639  011E  00F0               	movwf	??_isr
+   640  011F  0878               	movf	isr@range+1,w
+   641  0120  1803               	skipnc
+   642  0121  3E01               	addlw	1
+   643  0122  3E00               	addlw	0
+   644  0123  00F1               	movwf	??_isr+1
+   645  0124  0871               	movf	??_isr+1,w
+   646  0125  3A80               	xorlw	128
+   647  0126  3C80               	sublw	128
+   648  0127  1D03               	skipz
+   649  0128  292D               	goto	u14_25
+   650  0129  0870               	movf	??_isr,w
+   651  012A  1283               	bcf	3,5	;RP0=0, select bank0
+   652  012B  1303               	bcf	3,6	;RP1=0, select bank0
+   653  012C  021E               	subwf	30,w	;volatile
+   654  012D                     u14_25:	
+   655  012D  1C03               	skipc
+   656  012E  2946               	goto	i1l552
+   657  012F  0877               	movf	isr@range,w
+   658  0130  3E0C               	addlw	12
+   659  0131  00F0               	movwf	??_isr
+   660  0132  0878               	movf	isr@range+1,w
+   661  0133  1803               	skipnc
+   662  0134  3E01               	addlw	1
+   663  0135  3E00               	addlw	0
+   664  0136  00F1               	movwf	??_isr+1
+   665  0137  0871               	movf	??_isr+1,w
+   666  0138  3A80               	xorlw	128
+   667  0139  3C80               	sublw	128
+   668  013A  1D03               	skipz
+   669  013B  2940               	goto	u15_25
+   670  013C  0870               	movf	??_isr,w
+   671  013D  1283               	bcf	3,5	;RP0=0, select bank0
+   672  013E  1303               	bcf	3,6	;RP1=0, select bank0
+   673  013F  021E               	subwf	30,w	;volatile
+   674  0140                     u15_25:	
+   675  0140  1803               	skipnc
+   676  0141  2946               	goto	i1l552
+   677                           
+   678                           ;InteruptProject.c: 61: pattern = 0b01111111;
+   679  0142  307F               	movlw	127
+   680  0143  00F9               	movwf	_pattern
+   681  0144  3000               	movlw	0
+   682  0145  00FA               	movwf	_pattern+1
+   683  0146                     i1l552:	
+   684                           
+   685                           ;InteruptProject.c: 62: }
+   686                           ;InteruptProject.c: 64: if(ADRESH > (range+12)){
+   687  0146  0877               	movf	isr@range,w
+   688  0147  3E0C               	addlw	12
+   689  0148  00F0               	movwf	??_isr
+   690  0149  0878               	movf	isr@range+1,w
+   691  014A  1803               	skipnc
+   692  014B  3E01               	addlw	1
+   693  014C  3E00               	addlw	0
+   694  014D  00F1               	movwf	??_isr+1
+   695  014E  0871               	movf	??_isr+1,w
+   696  014F  3A80               	xorlw	128
+   697  0150  00F2               	movwf	??_isr+2
+   698  0151  3080               	movlw	128
+   699  0152  0272               	subwf	??_isr+2,w
+   700  0153  1D03               	skipz
+   701  0154  2959               	goto	u16_25
+   702  0155  1283               	bcf	3,5	;RP0=0, select bank0
+   703  0156  1303               	bcf	3,6	;RP1=0, select bank0
+   704  0157  081E               	movf	30,w	;volatile
+   705  0158  0270               	subwf	??_isr,w
+   706  0159                     u16_25:	
+   707  0159  1803               	skipnc
+   708  015A  295F               	goto	i1l556
+   709                           
+   710                           ;InteruptProject.c: 65: pattern = 0b1111111;
+   711  015B  307F               	movlw	127
+   712  015C  00F9               	movwf	_pattern
+   713  015D  3000               	movlw	0
+   714  015E  00FA               	movwf	_pattern+1
+   715  015F                     i1l556:	
+   716                           
+   717                           ;InteruptProject.c: 66: }
+   718                           ;InteruptProject.c: 68: PIR1bits.ADIF = 0;
+   719  015F  1283               	bcf	3,5	;RP0=0, select bank0
+   720  0160  1303               	bcf	3,6	;RP1=0, select bank0
+   721  0161  130C               	bcf	12,6	;volatile
+   722                           
+   723                           ;InteruptProject.c: 69: return;
+   724  0162  0876               	movf	??_isr+6,w
+   725  0163  00FF               	movwf	127
+   726  0164  0875               	movf	??_isr+5,w
+   727  0165  008A               	movwf	10
+   728  0166  0874               	movf	??_isr+4,w
+   729  0167  0084               	movwf	4
+   730  0168  0E73               	swapf	(??_isr+3)^(0+-128),w
+   731  0169  0083               	movwf	3
+   732  016A  0EFE               	swapf	126,f
+   733  016B  0E7E               	swapf	126,w
+   734  016C  0009               	retfie
+   735  016D                     __end_of_isr:	
+   736  007E                     btemp	set	126	;btemp
+   737  007E                     wtemp	set	126
+   738  007E                     wtemp0	set	126
+   739  0080                     wtemp1	set	128
+   740  0082                     wtemp2	set	130
+   741  0084                     wtemp3	set	132
+   742  0086                     wtemp4	set	134
+   743  0088                     wtemp5	set	136
+   744  007F                     wtemp6	set	127
+   745  007E                     ttemp	set	126
+   746  007E                     ttemp0	set	126
+   747  0081                     ttemp1	set	129
+   748  0084                     ttemp2	set	132
+   749  0087                     ttemp3	set	135
+   750  007F                     ttemp4	set	127
+   751  007E                     ltemp	set	126
+   752  007E                     ltemp0	set	126
+   753  0082                     ltemp1	set	130
+   754  0086                     ltemp2	set	134
+   755  0080                     ltemp3	set	128
+   756                           
+   757                           	psect	intentry
+   758  0004                     __pintentry:	
+   759                           ;incstack = 0
+   760                           ; Regs used in _isr: [wreg+status,2+status,0]
+   761                           
+   762  0004                     interrupt_function:	
+   763  007E                     saved_w	set	btemp
+   764  0004  00FE               	movwf	btemp
+   765  0005  0E03               	swapf	3,w
+   766  0006  00F3               	movwf	??_isr+3
+   767  0007  0804               	movf	4,w
+   768  0008  00F4               	movwf	??_isr+4
+   769  0009  080A               	movf	10,w
+   770  000A  00F5               	movwf	??_isr+5
+   771  000B  1283               	bcf	3,5	;RP0=0, select bank0
+   772  000C  1303               	bcf	3,6	;RP1=0, select bank0
+   773  000D  087F               	movf	btemp+1,w
+   774  000E  00F6               	movwf	??_isr+6
+   775  000F  118A  2818         	ljmp	_isr
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         2
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      9      11
+    BANK0            80      2       2
+    BANK1            80      0       0
+    BANK2            80      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _isr in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _isr in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _isr in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _isr in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0       0
+                                              0 BANK0      2     2      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (1) _isr                                                  9     9      0     240
+                                              0 COMMON     9     9      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ _isr (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            E      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMMON               E      9       B       1       78.6%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+BANK0               50      2       2       3        2.5%
+BITBANK1            50      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+BANK1               50      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+SFR2                 0      0       0       5        0.0%
+BITBANK2            50      0       0       6        0.0%
+BANK2               50      0       0       7        0.0%
+ABS                  0      0       D       8        0.0%
+BITBANK0            50      0       0       9        0.0%
+DATA                 0      0       D      10        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.38 build -256452561 
+Symbol Table                                                                                   Mon Jan  7 13:19:42 2019
+
+            __CFG_CP$OFF 0000                      l626 0193                      u177 0198  
+           __CFG_CPD$OFF 0000                      _isr 0018                      fsr0 0004  
+                   ?_isr 0070                     i1l32 0052                     u1_25 002C  
+                   u2_25 0041                     u3_25 004C                     u4_25 005B  
+                   u5_25 006E                     u6_25 0085                     u7_25 0098  
+                   u8_25 00AF                     u9_25 00C2                     _main 016D  
+                   btemp 007E                     ltemp 007E                     start 0011  
+                   ttemp 007E                     wtemp 007E            __CFG_IESO$OFF 0000  
+                  ??_isr 0070                    ?_main 0070            __CFG_WDTE$OFF 0000  
+                  _ANSEL 011E                    i1l512 0030                    i1l522 0074  
+                  i1l540 00F2                    i1l534 00C8                    i1l552 0146  
+                  i1l528 009E                    i1l546 011C                    i1l556 015F  
+                  u10_25 00D9                    u11_25 00EC                    u12_25 0103  
+                  u13_25 0116                    u14_25 012D                    u15_25 0140  
+                  u16_25 0159                    _PORTC 0007                    _TRISA 0085  
+                  _TRISB 0086                    _TRISC 0087           __CFG_FCMEN$OFF 0000  
+         __CFG_BOREN$OFF 0000                    pclath 000A                    ltemp0 007E  
+                  ltemp1 0082                    ltemp2 0086                    ltemp3 0080  
+                  ttemp0 007E                    ttemp1 0081                    ttemp2 0084  
+                  ttemp3 0087                    ttemp4 007F                    status 0003  
+                  wtemp0 007E                    wtemp1 0080                    wtemp2 0082  
+                  wtemp3 0084                    wtemp4 0086                    wtemp5 0088  
+                  wtemp6 007F           __CFG_MCLRE$OFF 0000          __initialization 0013  
+           __end_of_main 01A3                   ??_main 0020                   _ADRESH 001E  
+         __CFG_PWRTE$OFF 0000                   saved_w 007E  __end_of__initialization 0015  
+         __pcstackCOMMON 0070               __pmaintext 016D               __pintentry 0004  
+              _ANSELbits 011E                  __ptext1 0018             __size_of_isr 0155  
+                _pattern 0079     end_of_initialization 0015      start_initialization 0013  
+            __end_of_isr 016D              __pbssCOMMON 0079                ___latbits 0001  
+          __pcstackBANK0 0020        interrupt_function 0004                 _PIE1bits 008C  
+               _PIR1bits 000C               _ADCON0bits 001F               _ADCON1bits 009F  
+          __size_of_main 0036               _INTCONbits 000B                 isr@range 0077  
+               intlevel1 0000        __CFG_FOSC$INTRCIO 0000  
